@@ -2,61 +2,34 @@
 	name = Daniel Baak
 	email = daniel.baak@gmail.com
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	br = branch
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	b      = branch
+	st     = status
+	ci     = commit
+	co     = checkout
+	cob    = checkout -b
+	d      = diff
+	l      = log
+	lg     = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lga    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+  fixup  = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='%s' $@)\"' -
+  squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\"' -
+  ri 		 = rebase --interactive
+  rc     = rebase --continue
+	mt     = mergetool
 [color]
 	branch = auto
 	diff = auto
 	interactive = auto
 	status = auto
+  pager = true
 [core]
 	editor = vim
 	excludesfiles = .gitignore
+  excludes = ~/.gitexcludes
 [rebase]
 	autosquash = true 
-
-#TODO pick interesting config entries
-#[color]
-#    filemode = false
-#    diff = auto
-#    status = auto
-#    branch = auto
-#    pager = true
-#[alias]
-#    b = branch
-#    ci = commit
-#    co = checkout
-#    cob = checkout -b
-#    d = diff
-#    l = log
-#    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-#    lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
-#    st = status
-#    fixup = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='%s' $@)\"' -
-#    squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\"' -
-#    ri = rebase --interactive
-#    rc = rebase --continue
-#    pr = push gerrit HEAD:refs/for/master
-#    mt = mergetool
-#[user]
-#    email = REDACTED
-#    name = Matt Henkel
-#[core]
-#    pager = less -FRSX
-#    excludes = ~/.gitexcludes
-#    editor = vim
-#[rerere]
-#    enabled = true
-#    autoupdate = true
-#[rebase]
-#    autosquash = true
-#[merge]
-#    tool = kdiff3
-#[mergetool "kdiff3"]
-#    keepBackup = false
-#    trustExitCode = false
-#[diff]
-#    tool = kdiff3	
+[mergetool "vimdiff"]
+    keepBackup = false
+    trustExitCode = false
+[diff]
+    tool = vimdiff	
