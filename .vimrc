@@ -234,3 +234,5 @@ highlight Whitespace ctermbg=darkgreen guibg=darkgreen
 
 
 execute pathogen#infect()
+
+:set spell "spellang=en_us

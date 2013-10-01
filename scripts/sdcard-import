@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo mount /dev/mmcblk0p1 /media/usb0
+
+mv /media/usb/DCIM/100CANON /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M)
+
+sudo umount /media/usb0
