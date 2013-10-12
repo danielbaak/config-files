@@ -2,6 +2,6 @@
 
 sudo mount /dev/mmcblk0p1 /media/usb0
 
-mv /media/usb/DCIM/100CANON /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M)
+mv /media/usb/DCIM /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M_%S)_$1
 
 sudo umount /media/usb0
