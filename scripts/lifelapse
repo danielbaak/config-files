@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ~/screenshots/
+nohup watch -n 58 webcamshot &
+
