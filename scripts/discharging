@@ -1,0 +1,10 @@
+#!/bin/bash
+
+discharging=acpi | grep Discharging | wc | awk '{print($1)}'
+
+if [$discharging -ne 0]
+	then
+	echo "DISCHARGING: CHECK POWER SUPPLY!"
+	fi
+
+#TODO add code to set speaker volume to high, use external speaker and play a beep

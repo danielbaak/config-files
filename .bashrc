@@ -102,3 +102,6 @@ alias aws='ssh -i .ssh/startup_engineering_class_dan_ba.pem ubuntu@54.229.163.96
 alias vim='vim -p'
 
 export PATH=$PATH:~/scripts
+
+# update bash history after every command
+export PROMPT_COMMAND='history -a'

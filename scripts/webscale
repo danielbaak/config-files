@@ -1,0 +1,2 @@
+#!/bin/bash
+for i in $( ls *.tif); do convert -resize 2000000@ $i webscale/$i.jpg; done

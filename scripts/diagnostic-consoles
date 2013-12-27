@@ -1,9 +1,9 @@
 #!/bin/bash
 cd ~/
 nohup xterm -e htop > /dev/null &
+nohup xterm -e watch -n 60 sensors > /dev/null &
+nohup xterm -e watch -n 60 acpi -V > /dev/null &
 nohup xterm -e alsamixer > /dev/null &
 nohup xterm -e mocp > /dev/null &
-nohup xterm -e watch -n 3600 todo > /dev/null  &
-nohup xterm -e watch -n sensors > /dev/null  &
 nohup xterm -e sudo -s > /dev/null &
 

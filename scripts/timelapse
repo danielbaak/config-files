@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Usage: timelapse {videoName} {width} {height} {framerate}"
+
+mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell:autoaspect:vqscale=3 -vf scale=$2:$3 -mf type=jpeg:fps=$4 mf://@frames.txt -o $1.avi
