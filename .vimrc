@@ -233,7 +233,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 highlight Whitespace ctermbg=darkgreen guibg=darkgreen
 
 
-execute pathogen#infect()
+""execute pathogen#infect()
 
 :set spell "spellang=en_us
 
