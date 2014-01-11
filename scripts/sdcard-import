@@ -1,7 +1,10 @@
 #!/bin/bash
 
-sudo mount /dev/mmcblk0p1 /media/usb0
+#sudo mount /dev/mmcblk0p1 /media/usb0
+if [ "$#" -eq "3" ]; then
+	sudo mount /dev/sdcard /media/usb0
+fi
 
-mv /media/usb/DCIM /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M_%S)_$1
+rsync --progress --remove-source-files -r /media/EOS_DIGITAL/DCIM /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M_%S)_$1
 
-sudo umount /media/usb0
+sudo umount /media/EOS_DIGITAL
