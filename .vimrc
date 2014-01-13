@@ -239,3 +239,7 @@ highlight Whitespace ctermbg=darkgreen guibg=darkgreen
 
 "" enable syntax highlighting in JSON files
 autocmd BufNewFile,BufRead *.json set ft=javascript
+
+"" jade files only support tabs xor spaces for indentation
+set tabstop=2 shiftwidth=2 expandtab
+
