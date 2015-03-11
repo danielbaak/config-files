@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #sudo mount /dev/mmcblk0p1 /media/usb0
-if [ "$#" -eq "3" ]; then
-	sudo mount /dev/sdcard /media/usb0
-fi
+#if [ "$#" -eq "3" ]; then
+#	sudo mount /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_000000078-0\:1-part1 /media/usb0
+#fi
 
-rsync --progress --remove-source-files -r /media/EOS_DIGITAL/DCIM /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M_%S)_$1
+rsync --progress --remove-source-files -r /media/usb0/DCIM /home/def/removable/usb/Photos/$(date +%Y%m%d_%H%M_%S)_$1
 
-sudo umount /media/EOS_DIGITAL
+#sudo umount /media/usb0

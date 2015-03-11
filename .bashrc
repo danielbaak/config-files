@@ -72,15 +72,18 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+# init z https://github.com/rupa/Z
+. ~/scripts/z/z.sh
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -98,10 +101,56 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-alias aws='ssh -i .ssh/startup_engineering_class_dan_ba.pem ubuntu@54.229.163.96'
+alias aws='ssh -i .ssh/aws_gitlab.pem ubuntu@54.186.58.74'
+alias frz='ssh -X te78nic@login.minet.uni-jena.de'
 alias vim='vim -p'
 
 export PATH=$PATH:~/scripts
 
+# add gimp to path
+export PATH=$PATH:/opt/gimp-master/bin
+
 # update bash history after every command
 export PROMPT_COMMAND='history -a'
+
+export CHROME_BIN=/usr/bin/chromium
+
+
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
+export PS1='\u@\h \[\033[1;33m\]\w\[\033[0m\] $(parse_git_branch)$ '
+
+alias ccat='pygmentize -g'
+
+alias gst='git st'
+alias glg='git lg'
+
+alias df='df -h'
+
+alias t='tda -p3'
+
+export PATH=${PATH}:/home/def/ADT/sdk/platform-tools:/home/def/ADT/sdk/tools:/home/def/eclipse-sts/sts-3.5.1.RELEASE
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+shopt -s progcomp
+for f in $(command ls ~/.node-completion); do
+  f="$HOME/.node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}
+
+alias feh='feh -Fd --draw-exif'
+
+NPM_PACKAGES="/home/def/.npm-packages"
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# command
+unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"

@@ -1,5 +1,12 @@
 #!/bin/bash
 
-echo "Usage: timelapse {videoName} {width} {height} {framerate}"
+echo "Usage: timelapse {videoName} {framerate} {resolution}"
 
-mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell:autoaspect:vqscale=3 -vf scale=$2:$3 -mf type=jpeg:fps=$4 mf://@frames.txt -o $1.avi
+if [ $3 ]
+then
+mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell:autoaspect:vqscale=3 -vf scale=$3 -mf type=jpeg:fps=$2 mf://@frames.txt -o $1.avi
+else
+echo "no scale provided, using input scale"
+mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell:autoaspect:vqscale=3 -mf type=jpeg:fps=$2 mf://@frames.txt -o $1.avi
+
+fi

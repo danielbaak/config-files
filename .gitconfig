@@ -22,6 +22,7 @@
 	interactive = auto
 	status = auto
   pager = true
+	diff = always
 [core]
 	editor = vim
 	excludesfiles = .gitignore
@@ -33,3 +34,5 @@
     trustExitCode = false
 [diff]
     tool = vimdiff	
+[credential]
+	helper = cache --timeout=360000
